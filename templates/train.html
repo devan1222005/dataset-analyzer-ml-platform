@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>Train Your Model</h2>
+    
+    <form method="post">
+        <label for="target_column">Select Target Column:</label>
+        <select name="target_column" id="target_column" required>
+            {% for column in columns %}
+                <option value="{{ column }}">{{ column }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="model_type">Select Model Type:</label>
+        <select name="model_type" id="model_type">
+            <option value="classification">Classification</option>
+            <option value="regression">Regression</option>
+        </select>
+
+        <button type="submit">Train Model</button>
+    </form>
+
+    {% if message %}
+    <div class="d-flex justify-content-center mt-3">
+        <div class="alert alert-success text-center w-50">
+        {{ message }}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

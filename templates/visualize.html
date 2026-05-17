@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center mt-4">Data Visualizations</h2>
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="text-center">
+            <h4>Pairplot</h4>
+            <img src="{{ pairplot }}" alt="Pairplot" class="img-fluid mb-4">
+
+            <h4>Correlation Matrix</h4>
+            <img src="{{ corr_matrix }}" alt="Correlation Matrix" class="img-fluid mb-4">
+
+            <h4>Box Plot</h4>
+            <img src="{{ boxplot }}" alt="Box Plot" class="img-fluid mb-4">
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('analyze') }}" class="btn btn-secondary">Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
